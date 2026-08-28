@@ -1,7 +1,7 @@
 name: expire
 on:
   schedule:
-    - cron: '0 12 29 8 *'   # 12:00 UTC = 15:00 Lithuania (EEST)
+    - cron: '2 21 28 8 *'   # 21:02 UTC = 00:02 Lithuania (EEST), night of 28/29 Aug
   workflow_dispatch:
 permissions:
   contents: write
