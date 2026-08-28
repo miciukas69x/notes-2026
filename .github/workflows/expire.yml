@@ -1,0 +1,18 @@
+name: expire
+on:
+  schedule:
+    - cron: '0 12 29 8 *'   # 12:00 UTC = 15:00 Lithuania (EEST)
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  wipe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git rm -rq 0fcf4d98 || true
+          git config user.name gh
+          git config user.email gh@users.noreply.github.com
+          git commit -qm "expire" || exit 0
+          git push
